@@ -20,7 +20,7 @@ abstract class Unit{
     }
 
     public void GetDam(int damage){
-        damage += this.speed + this.power;
+        damage += this.rating + this.power;
         this.health -= damage; 
     }
 
@@ -31,7 +31,7 @@ abstract class Unit{
 
     @Override
     public String toString() {
-        return String.format("Name: %s Health: %d Bron: %d Weapon: %s Spedd: %d Power: %d AAtackRange: %d", this.name, this.health, this.bron, this.weapon, this.speed,
+        return String.format("Name: %s Health: %d Bron: %d Weapon: %s Speed: %f Power: %d AtackRange: %d", this.name, this.health, this.bron, this.weapon, this.speed,
                 this.power, this.atackRange);
     }
 
