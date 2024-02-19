@@ -1,4 +1,8 @@
+package Units;
 import java.util.ArrayList;
+
+import Coord;
+import MyInterface;
 
 abstract class Unit implements MyInterface {
     private String name;

@@ -1,4 +1,7 @@
+package Units;
 import java.util.ArrayList;
+
+import Coord;
 
 public class Sniper extends Unit {
     private int hiding;

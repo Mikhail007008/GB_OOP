@@ -1,11 +1,14 @@
+package Units;
 import java.util.ArrayList;
 
-public class Peasant extends Unit {
-    private int endurance;
+import Coord;
 
-    public Peasant(String name, Coord position, ArrayList<Unit> team) {
-        super(name, 100, 0, "Stick", 0.6, 10, 10, 0, position, team);
-        this.endurance = 50;
+public class Monk extends Unit{
+    private String ironPunch;
+
+    public Monk(String name, Coord position, ArrayList<Unit> team) {
+        super(name, 100, 70, "Axe", 0.3, 70, 10, 0, position, team);
+        this.ironPunch = ironPunch;
     }
 
     @Override

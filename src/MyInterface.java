@@ -1,3 +1,5 @@
+import Units.Unit;
+
 public interface MyInterface {
     void atack(Unit opponent, int damage);
 

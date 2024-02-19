@@ -1,4 +1,7 @@
+package Units;
 import java.util.ArrayList;
+
+import Coord;
 
 public class Mag extends Unit{
 

@@ -1,4 +1,7 @@
+package Units;
 import java.util.ArrayList;
+
+import Coord;
 
 public class Bandit extends Unit {
     private int agility;
