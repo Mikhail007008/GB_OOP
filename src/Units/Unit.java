@@ -1,6 +1,11 @@
+package Units;
+
+import Edits.Coord;
+import Edits.MyInterface;
+
 import java.util.ArrayList;
 
-abstract class Unit implements MyInterface {
+abstract public class Unit implements MyInterface {
     private String name;
     private int health;
     private int bron;
@@ -25,18 +30,14 @@ abstract class Unit implements MyInterface {
         this.team = team;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
     public int getHealth() {return health;}
     public double getSpeed() {return speed;}
     public int getAtackRange() {return atackRange;}
     public int getRating() {return rating;}
     public int getBron() {return bron;}
     public int getPower() {return power;}
-    public Coord getPosition() {
-        return position;
-    }
+    public Coord getPosition() {return position;}
 
     public void setName(String name) {this.name = name;}
     public void setHealth(int health) {this.health = health;}

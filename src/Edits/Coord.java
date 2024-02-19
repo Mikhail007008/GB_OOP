@@ -1,3 +1,5 @@
+package Edits;
+
 public class Coord {
     int x, y;
 

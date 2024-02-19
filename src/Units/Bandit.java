@@ -1,3 +1,7 @@
+package Units;
+
+import Edits.Coord;
+
 import java.util.ArrayList;
 
 public class Bandit extends Unit {
@@ -14,7 +18,7 @@ public class Bandit extends Unit {
 
     @Override
     public String toString() {
-        return String.format("Name: %s, Coord: %s", getName(), getPosition());
+        return String.format("Name: %s, Edits.Coord: %s", getName(), getPosition());
     }
 
     @Override

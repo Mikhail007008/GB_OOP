@@ -1,4 +1,4 @@
-import java.util.Random;
+package Edits;
 
 public enum Names {
     Nymphair, Fenriros ,Pegastomp, Dracorion ,Satyrossus, Vampithrax, Haelostrix, Dragonarwhal ,Krackalope, Basilirock, Ligerfly,

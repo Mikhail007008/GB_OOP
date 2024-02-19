@@ -1,10 +1,14 @@
+package Units;
+
+import Edits.Coord;
+
 import java.util.ArrayList;
 
 public class Mag extends Unit{
 
     private int mana;
 
-    protected Mag(String name, Coord position, ArrayList<Unit> team) {
+    public Mag(String name, Coord position, ArrayList<Unit> team) {
         super(name, 110, 20, "Staff", 0.3, 10, 60, 0, position, team);
         this.mana = 30;
     }
@@ -16,7 +20,7 @@ public class Mag extends Unit{
     }
 
     @Override
-    public String toString() {return String.format("Name: %s, Coord: %s", getName(), getPosition());}
+    public String toString() {return String.format("Name: %s, Edits.Coord: %s", getName(), getPosition());}
 
     @Override
     public void getDam(int damage){
