@@ -33,7 +33,6 @@ abstract public class Unit implements MyInterface {
     }
 
     public String getName() {return name;}
-    public String getName() {return name;}
     public int getHealth() {return health;}
     public int getSpeed() {return speed;}
     public int getAtackRange() {return atackRange;}
