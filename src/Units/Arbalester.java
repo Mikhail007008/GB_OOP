@@ -1,5 +1,4 @@
 package Units;
-<<<<<<< HEAD
 
 import Edits.Coord;
 
@@ -52,3 +51,4 @@ public class Arbalester extends Unit{
 
     @Override
     public String toString() {return String.format("Name: %s, Coord: %s", name, position);}
+}
