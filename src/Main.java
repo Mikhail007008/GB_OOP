@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Unit> teamOne = new ArrayList<>();
         ArrayList<Unit> teamTwo = new ArrayList<>();
+        ArrayList<Unit> allStarTeam = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
 
@@ -61,9 +62,16 @@ public class Main {
                     break;
             }
         }
+
+        allStarTeam.addAll(teamOne);
+        allStarTeam.addAll(teamTwo);
+        allStarTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
+        allStarTeam.forEach(System.out::println);
     }
 
     private static String getName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
+
+    
 }
