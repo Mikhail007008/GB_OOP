@@ -5,15 +5,6 @@ import Units.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Units.Arbalester;
-import Units.Bandit;
-import Units.Mag;
-import Units.Monk;
-import Units.Peasant;
-import Units.Sniper;
-import Units.Spearman;
-import Units.Unit;
-
 public class Main {
 
     public static void main(String[] args) {
