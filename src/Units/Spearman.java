@@ -1,24 +1,24 @@
-package Units;
+if (health < 0) return;
 
-import Edits.Coord;
+        Unit target = findEnemy(enemy);
 
-import java.util.ArrayList;
+        if (target == null) return;
 
-public class Spearman extends Unit {
-    int doubleBron;
+        if (position.editCoord(target.position) < 2) {
+            System.out.println("Ближайший враг: " + target.name);
+            target.getHit(power);
+            return;
+        }
 
-    public Spearman(String name, Coord position) {
-        super(name, 100, 100, 80, "spear", 2, 60, 20, 0, position);
-        doubleBron = 20;
-    }
+        Coord space = position.findSpace(target.position);
+        Coord newCoord = new Coord(this.position.getX(), this.position.getY());
 
-    @Override
-    public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
+        if (Math.abs(space.getX()) > Math.abs(space.getY())) {
+            newCoord.setX(newCoord.getX() + (space.getX() < 0 ? 1 : -1));
+        } else newCoord.setY(newCoord.getY() + (space.getY() < 0 ? 1 : -1));
 
-    }
+        for (Unit unit : friend) {
+            if (unit.position.equals(newCoord)) return;
+        }
 
-    @Override
-    public String toString() {
-        return String.format("Unit: %s, Name: %s, Coord: %s", getClass().getSimpleName(), name, position);
-    }
-}
+        this.position = newCoord;
