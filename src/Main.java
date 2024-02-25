@@ -4,6 +4,7 @@ import Units.*;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -16,49 +17,49 @@ public class Main {
 
             switch (new Random().nextInt(7)) {
                 case 0:
-                    teamOne.add(new Mag(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Mag(getName(), new Coord(i, 0)));
                     break;
                 case 1:
-                    teamOne.add(new Arbalester(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Arbalester(getName(), new Coord(i, 0)));
                     break;
                 case 2:
-                    teamOne.add(new Bandit(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Bandit(getName(), new Coord(i, 0)));
                     break;
                 case 3:
-                    teamOne.add(new Monk(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Monk(getName(), new Coord(i, 0)));
                     break;
                 case 4:
-                    teamOne.add(new Peasant(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Peasant(getName(), new Coord(i, 0)));
                     break;
                 case 5:
-                    teamOne.add(new Sniper(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Sniper(getName(), new Coord(i, 0)));
                     break;
                 case 6:
-                    teamOne.add(new Spearman(getName(), new Coord(i, 0), teamTwo));
+                    teamOne.add(new Spearman(getName(), new Coord(i, 0)));
                     break;
             }
 
             switch (new Random().nextInt(7)) {
                 case 0:
-                    teamTwo.add(new Mag(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Mag(getName(), new Coord(i, 9)));
                     break;
                 case 1:
-                    teamTwo.add(new Arbalester(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Arbalester(getName(), new Coord(i, 9)));
                     break;
                 case 2:
-                    teamTwo.add(new Bandit(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Bandit(getName(), new Coord(i, 9)));
                     break;
                 case 3:
-                    teamTwo.add(new Monk(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Monk(getName(), new Coord(i, 9)));
                     break;
                 case 4:
-                    teamTwo.add(new Peasant(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Peasant(getName(), new Coord(i, 9)));
                     break;
                 case 5:
-                    teamTwo.add(new Sniper(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Sniper(getName(), new Coord(i, 9)));
                     break;
                 case 6:
-                    teamTwo.add(new Spearman(getName(), new Coord(i, 9), teamOne));
+                    teamTwo.add(new Spearman(getName(), new Coord(i, 9)));
                     break;
             }
         }
@@ -67,11 +68,22 @@ public class Main {
         allStarTeam.addAll(teamTwo);
         allStarTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
         allStarTeam.forEach(System.out::println);
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            scanner.nextLine();
+
+            for (Unit unit : allStarTeam) {
+                if (teamOne.contains(unit)) {
+                    unit.step(teamTwo, teamOne);
+                } else unit.step(teamOne, teamTwo);
+            }
+        }
     }
 
     private static String getName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
-    
+
 }
