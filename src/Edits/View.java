@@ -1,8 +1,6 @@
 package Edits;
 
 import Units.Unit;
-
-import java.util.ArrayList;
 import java.util.Collections;
 
 import Program.Main;
