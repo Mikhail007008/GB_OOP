@@ -1,5 +1,4 @@
 package Units;
-<<<<<<< HEAD
 
 import Edits.Coord;
 
@@ -8,52 +7,39 @@ import java.util.ArrayList;
 public class Bandit extends Unit {
     int agility;
 
-    public Bandit(String name, Coord position, ArrayList<Unit> team) {
-        super(name, 100,100, 40, "Knife", 2, 40, 50, 0, position, team);
+    public Bandit(String name, Coord position) {
+        super(name, 100, 100, 40, "Knife", 2, 40, 50, 0, position);
         agility = 30;
     }
 
-    public void speedUp() {speed++;}
-    
-    @Override
-    public void step() {
-        
-=======
-import java.util.ArrayList;
-
-import Coord;
-
-public class Bandit extends Unit {
-    private int agility;
-
-    public Bandit(String name, Coord position, ArrayList<Unit> team) {
-        super(name, 100, 40, "Knife", 0.8, 40, 50, 0, position, team);
-        this.agility = 30;
-    }
-
     public void speedUp() {
-        setSpeed(getSpeed() + 0.1);
->>>>>>> 08d1ffde9ed9158cc4c56f43906082b4fbd8d3ed
+        speed++;
     }
 
     @Override
-    public String toString() {
-<<<<<<< HEAD
-        return String.format("Name: %s, Coord: %s", name, position);
-=======
-        return String.format("Name: %s, Coord: %s", getName(), getPosition());
-    }
+    public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
+        if (health <= 0) return;
 
-    @Override
-    public void getDam(int damage) {
-        damage += getRating() + getPower();
-        setHealth(getHealth() - damage);
-    }
+        Unit target = findEnemy(enemy);
 
-    @Override
-    public void atack(Unit opponent, int damage) {
-        opponent.getDam(damage);
-        setRating(getRating() + 10);
->>>>>>> 08d1ffde9ed9158cc4c56f43906082b4fbd8d3ed
+        if (target == null) return;
+
+        if (position.editCoord(target.position) < 2) {
+            target.getHit(power);
+            return;
+        }
+
+        Coord space = position.findSpace(target.position);
+        Coord newCoord = new Coord(this.position.getX(), this.position.getY());
+
+        if (Math.abs(space.getX()) > Math.abs(space.getY())) {
+            newCoord.setX(newCoord.getX() + (space.getX() < 0 ? 1 : -1));
+        } else newCoord.setY(newCoord.getY() + (space.getY() < 0 ? 1 : -1));
+
+        for (Unit unit : friend) {
+            if (unit.position.equals(newCoord) && unit.health > 0) return;
+        }
+
+        this.position = newCoord;
     }
 }

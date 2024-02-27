@@ -15,10 +15,9 @@ abstract public class Unit implements MyInterface {
     int power;
     int atackRange;
     int rating;
-    Coord position;
-    ArrayList<Unit> team;
+    public Coord position;
 
-    public Unit(String name, int health, int maxHealth, int bron, String weapon, int speed, int power, int atackRange, int rating, Coord position, ArrayList<Unit> team) {
+    public Unit(String name, int health, int maxHealth, int bron, String weapon, int speed, int power, int atackRange, int rating, Coord position) {
         this.name = name;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -29,10 +28,8 @@ abstract public class Unit implements MyInterface {
         this.atackRange = atackRange;
         this.rating = rating;
         this.position = position;
-        this.team = team;
     }
 
-    public String getName() {return name;}
     public String getName() {return name;}
     public int getHealth() {return health;}
     public int getSpeed() {return speed;}
@@ -53,11 +50,13 @@ abstract public class Unit implements MyInterface {
     public void setRating(int rating) {this.rating = rating;}
     public void setMaxHealth(int maxHealth) {this.maxHealth = maxHealth;}
 
-    public Unit findEnemy() {
+    public Unit findEnemy(ArrayList<Unit> enemies) {
+        if (enemies.isEmpty()) return null;
+
         Unit closestEnemy = null;
         double minDist = Double.MAX_VALUE;
 
-        for (Unit enemy : team) {
+        for (Unit enemy : enemies) {
             double dist = position.editCoord(enemy.position);
             if (dist < minDist && enemy.health > 0) {
                 minDist = dist;
@@ -67,16 +66,18 @@ abstract public class Unit implements MyInterface {
         return closestEnemy;
     }
 
-    public void getHit(float damage){
-        health -= (int)damage;
-        rating += 10;
+    public void getHit(int damage){
+        health -= damage;
         if (health < 0) health = 0;
         if (health > maxHealth) health = maxHealth;
     }
 
     @Override
     public String toString() {
-        return String.format("Name: %s Health: %d Bron: %d Weapon: %s Speed: %d Power: %d AtackRange: %d Position: %s", this.name, this.health, this.bron, this.weapon, this.speed,
-                this.power, this.atackRange, this.position);
+        return  name + ", \u2665: " + health + ",  ⚔ : " + power + ", \uD83D\uDEE1\uFE0F :" + bron + ", Rating: " + rating;
     }
+
+    public String getInfo(){
+        return getClass().getSimpleName();
+    };
 }
