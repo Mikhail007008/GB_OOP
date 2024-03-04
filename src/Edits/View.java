@@ -1,9 +1,9 @@
 package Edits;
 
-import Units.Unit;
-import java.util.Collections;
-
 import Program.Main;
+import Units.Unit;
+
+import java.util.Collections;
 public class View {
     private static int step = 1;
     private static final int[] l = {0};
@@ -29,7 +29,7 @@ public class View {
     private static String getChar(int x, int y){
         String out = "| ";
         for (Unit human: Main.allTeam) {
-            if (human.position.getX() == x && human.position.getY() == y){
+            if (human.getPosition().getX() == x && human.getPosition().getY() == y){
                 if (human.getHealth() == 0) {
                     out = "|" + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                     break;

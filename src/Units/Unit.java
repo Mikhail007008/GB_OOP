@@ -15,7 +15,8 @@ abstract public class Unit implements MyInterface {
     int power;
     int atackRange;
     int rating;
-    public Coord position;
+
+    Coord position;
 
     public Unit(String name, int health, int maxHealth, int bron, String weapon, int speed, int power, int atackRange, int rating, Coord position) {
         this.name = name;
@@ -33,22 +34,9 @@ abstract public class Unit implements MyInterface {
     public String getName() {return name;}
     public int getHealth() {return health;}
     public int getSpeed() {return speed;}
-    public int getAtackRange() {return atackRange;}
-    public int getRating() {return rating;}
-    public int getBron() {return bron;}
-    public int getPower() {return power;}
     public Coord getPosition() {return position;}
-    public int getMaxHealth() {return maxHealth;}
 
     public void setName(String name) {this.name = name;}
-    public void setHealth(int health) {this.health = health;}
-    public void setBron(int bron) {this.bron = bron;}
-    public void setWeapon(String weapon) {this.weapon = weapon;}
-    public void setSpeed(int speed) {this.speed = speed;}
-    public void setPower(int power) {this.power = power;}
-    public void setAtackRange(int atackRange) {this.atackRange = atackRange;}
-    public void setRating(int rating) {this.rating = rating;}
-    public void setMaxHealth(int maxHealth) {this.maxHealth = maxHealth;}
 
     public Unit findEnemy(ArrayList<Unit> enemies) {
         if (enemies.isEmpty()) return null;
@@ -74,7 +62,7 @@ abstract public class Unit implements MyInterface {
 
     @Override
     public String toString() {
-        return  name + ", \u2665: " + health + ",  ⚔ : " + power + ", \uD83D\uDEE1\uFE0F :" + bron + ", Rating: " + rating;
+        return name + ", \u2665: " + health + ",  ⚔ : " + power + ", \uD83D\uDEE1\uFE0F :" + bron + ", Rating: " + rating;
     }
 
     public String getInfo(){

@@ -4,21 +4,17 @@ import Edits.Coord;
 
 import java.util.ArrayList;
 
-public class Bandit extends Unit {
+abstract public class Warrior extends Unit {
     int agility;
 
-    public Bandit(String name, Coord position) {
-        super(name, 100, 100, 40, "Knife", 2, 40, 50, 0, position);
+    public Warrior(String name, String weapon, Coord position) {
+        super(name, 100, 100, 40, weapon, 2, 40, 50, 0, position);
         agility = 30;
-    }
-
-    public void speedUp() {
-        speed++;
     }
 
     @Override
     public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
-        if (health <= 0) return;
+        if (health == 0) return;
 
         Unit target = findEnemy(enemy);
 
@@ -30,7 +26,7 @@ public class Bandit extends Unit {
         }
 
         Coord space = position.findSpace(target.position);
-        Coord newCoord = new Coord(this.position.getX(), this.position.getY());
+        Coord newCoord = new Coord(position.getX(), position.getY());
 
         if (Math.abs(space.getX()) > Math.abs(space.getY())) {
             newCoord.setX(newCoord.getX() + (space.getX() < 0 ? 1 : -1));
@@ -40,6 +36,6 @@ public class Bandit extends Unit {
             if (unit.position.equals(newCoord) && unit.health > 0) return;
         }
 
-        this.position = newCoord;
+        position = newCoord;
     }
 }
